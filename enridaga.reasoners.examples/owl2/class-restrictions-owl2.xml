@@ -26,7 +26,7 @@
 
 	<!-- any employer must have some features: firstname, familyname, email 
 		and worksAt (in one of the allowed places) -->
-	<owl:Class rdf:about="#Employer">
+	<owl:Class rdf:about="#Employee">
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -84,10 +84,10 @@
 
 
 	<!-- enridaga, to be an employer, must fulfill the restrictions defined 
-		for the class #Employer. -->
+		for the class #Employee. -->
 	<Person rdf:about="#enridaga">
 		<!-- If you comment one of the next 4 statement, you won't have #enridaga 
-			to result as #Employer. -->
+			to result as #Employee. -->
 		<firstname>Enrico</firstname>
 		<familyname>Daga</familyname>
 		<email>enridaga@example.org</email>
@@ -95,7 +95,7 @@
 
 		<!-- If you uncomment the two statements below you will obtain an inconsistency, 
 			because #Moricone is not an allowed place for developers -->
-		<!-- <worksAt rdf:resource="#Moricone" /> <rdf:type rdf:resource="#Employer" 
+		<!-- <worksAt rdf:resource="#Moricone" /> <rdf:type rdf:resource="#Employee" 
 			/> -->
 	</Person>
 

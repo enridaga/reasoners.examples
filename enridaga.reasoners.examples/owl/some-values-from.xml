@@ -39,7 +39,7 @@
 	</owl:Class>
 
 	<!-- Employers are all who #worksAt any kind of Organization (owl:equivalentClass) -->
-	<owl:Class rdf:about="#Employer">
+	<owl:Class rdf:about="#Employee">
 		<owl:equivalentClass>
 			<owl:restriction>
 				<owl:onProperty rdf:resource="#worksAt" />
@@ -48,5 +48,5 @@
 		</owl:equivalentClass>
 	</owl:Class>
 
-	<!-- We expect a reasoner to state that John is an #Employer -->
+	<!-- We expect a reasoner to state that John is an #Employee -->
 </rdf:RDF>
