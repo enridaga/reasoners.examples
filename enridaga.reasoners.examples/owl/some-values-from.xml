@@ -5,8 +5,7 @@
 
 	<!-- This file is an OWL ontology -->
 	<owl:Ontology rdf:about="">
-		<rdfs:comment>This is an example of a symmetric and transitive
-			property assertion
+		<rdfs:comment>This is an example of the usage of owl:someValuesFrom
 		</rdfs:comment>
 		<rdfs:comment>This example works with:
 			* /owl (the Jena OWL reasoner)
