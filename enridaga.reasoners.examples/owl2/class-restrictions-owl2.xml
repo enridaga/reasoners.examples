@@ -1,7 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:ex="http://www.example.org/reasoners/restrictions#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.example.org/reasoners/restrictions#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns="http://www.example.org/reasoners/restrictions#"
 	xml:base="http://www.example.org/reasoners/restrictions#">
 
 	<!-- This file is an OWL ontology -->
@@ -18,37 +24,42 @@
 		</rdfs:comment>
 	</owl:Ontology>
 
-	<!-- any employer must have some features -->
+	<!-- any employer must have some features: firstname, familyname, email 
+		and worksAt (in one of the allowed places) -->
 	<owl:Class rdf:about="#Employer">
-		<owl:intersectionOf rdf:parseType="Collection">
-			<rdf:Description rdf:about="#Person" />
-
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="#firstname" />
-				<owl:cardinality
-					rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-			</owl:Restriction>
-
-			<!-- -->
-			<!-- Employers can work only in #Rome , #Catania and #Bologna -->
-			<!-- <owl:Restriction> <owl:onProperty rdf:resource="#worksAt" /> <owl:someValuesFrom> 
-				<owl:Class> <owl:oneOf rdf:parseType="Collection"> <owl:Thing rdf:about="#Rome" 
-				/> <owl:Thing rdf:about="#Catania" /> <owl:Thing rdf:about="#Bologna" /> 
-				</owl:oneOf> </owl:Class> </owl:someValuesFrom> </owl:Restriction> <owl:Restriction> 
-				<owl:onProperty rdf:resource="#worksAt" /> <owl:allValuesFrom> <owl:Class> 
-				<owl:oneOf rdf:parseType="Collection"> <owl:Thing rdf:about="#Rome" /> <owl:Thing 
-				rdf:about="#Catania" /> <owl:Thing rdf:about="#Bologna" /> </owl:oneOf> </owl:Class> 
-				</owl:allValuesFrom> </owl:Restriction> -->
-		</owl:intersectionOf>
-	</owl:Class>
-	
-	<owl:Class rdf:about="#Pippo">
 		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="#firstname" />
-				<owl:cardinality
-					rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-			</owl:Restriction>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="#Person" />
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="#firstname" />
+						<owl:someValuesFrom rdf:resource="&rdfs;Literal" />
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="#familyname" />
+						<owl:someValuesFrom rdf:resource="&rdfs;Literal" />
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="#email" />
+						<owl:someValuesFrom rdf:resource="&rdfs;Literal" />
+					</owl:Restriction>
+					<!-- -->
+					<!-- Let's say that Employers can work only in #Rome , #Catania and 
+						#Bologna -->
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="#worksAt" />
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:oneOf rdf:parseType="Collection">
+									<owl:Thing rdf:about="#Rome" />
+									<owl:Thing rdf:about="#Catania" />
+									<owl:Thing rdf:about="#Bologna" />
+								</owl:oneOf>
+							</owl:Class>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
 		</owl:equivalentClass>
 	</owl:Class>
 
@@ -76,7 +87,7 @@
 		for the class #Employer. -->
 	<Person rdf:about="#enridaga">
 		<!-- If you comment one of the next 4 statement, you won't have #enridaga 
-			to result as #Employer, generating an exception -->
+			to result as #Employer. -->
 		<firstname>Enrico</firstname>
 		<familyname>Daga</familyname>
 		<email>enridaga@example.org</email>
