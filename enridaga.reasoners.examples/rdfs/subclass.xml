@@ -1,0 +1,31 @@
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:ex="http://www.example.org/reasoners/"
+	xmlns="http://www.example.org/reasoners/subclass/">
+
+	<rdf:Description rdf:about="">
+		<rdfs:comment>To show the semantic of the rdfs:subClassOf relation</rdfs:comment>
+		<rdfs:comment>
+		Works with:
+		* /owl
+		* /rdfs
+		* /owlmini
+		* /owl2
+		</rdfs:comment>
+	</rdf:Description>
+	
+	<!-- item_1 is an Article -->
+	<ex:Article rdf:about="http://www.example.org/reasoners/item_1"/>
+	
+	<!-- An article is a kind of Document -->
+	<rdf:Description rdf:about="http://www.example.org/reasoners/Article">
+		<rdfs:subClassOf rdf:resource="http://www.example.org/reasoners/Document"/>
+	</rdf:Description>
+	
+	<!-- An document is a kind of content item -->
+	<rdf:Description rdf:about="http://www.example.org/reasoners/Document">
+		<rdfs:subClassOf rdf:resource="http://www.example.org/reasoners/ContentItem"/>
+	</rdf:Description>
+	
+</rdf:RDF>

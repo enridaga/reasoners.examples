@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:ex="http://www.example.org/reasoners/"
+	xmlns="http://www.example.org/reasoners/domain-range/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xml:base="http://www.example.org/reasoners/domain-range/">
+
+	<rdf:Description rdf:about="">
+		<rdfs:comment>RDF snippet to show rdfs:domain and rdfs:range </rdfs:comment>
+		<rdfs:comment>All domains of the property author must be Persons, and all ranges some ContentItem</rdfs:comment>
+		<rdfs:comment>
+		Works with:
+		* /owl
+		* /rdfs
+		* /owlmini
+		* /owl2
+		</rdfs:comment>
+	</rdf:Description>
+	
+	<!-- Both enridaga and alexdma are authors of item_1 -->
+	<rdf:Description rdf:about="http://www.example.org/reasoners/enridaga">
+		<ex:author rdf:resource="http://www.example.org/reasoners/item_1"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://www.example.org/reasoners/alexdma">
+		<ex:author rdf:resource="http://www.example.org/reasoners/item_1"/>
+	</rdf:Description>
+	
+	<!-- ex:author wants a person as subject, and a content-item as object -->
+	<rdf:Description rdf:about="http://www.example.org/reasoners/author">
+		<rdfs:domain rdf:resource="http://www.example.org/reasoners/Person"/>
+		<rdfs:range rdf:resource="http://www.example.org/reasoners/ContentItem"/>
+	</rdf:Description>
+	
+	
+</rdf:RDF>
